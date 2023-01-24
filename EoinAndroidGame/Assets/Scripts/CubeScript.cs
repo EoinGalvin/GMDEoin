@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CubeScript : MonoBehaviour
+public class CubeScript : MonoBehaviour, ITouchables
 {
     Vector3 acceleration;
     Vector3 velocity;
@@ -28,8 +28,18 @@ public class CubeScript : MonoBehaviour
     internal void moveUp(){
         transform.position += Vector3.up;
     }
+    public void OnTap()
+    {
+        GetComponent<Renderer>().material.color = Color.cyan;
+    }
 
-    internal void changeColour(Color colour){
-        GetComponent<Renderer>().material.color = colour;
+    public void onDrag(Ray collidingRay)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void cubeOnly()
+    {
+        print("cube only code");
     }
 }
